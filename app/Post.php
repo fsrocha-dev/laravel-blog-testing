@@ -16,7 +16,7 @@ class Post extends Model
     public function details()
     {
         return $this->hasOne('App\Details', 'post_id', 'id')
-                    ->withDefault(function($details) {
+                    ->withDefault(function ($details) {
                         $details->status = 'rascunho';
                         $details->visibility = 'privado';
                     });
@@ -43,4 +43,13 @@ class Post extends Model
                     ->withTimestamps();
     }
 
+    /**
+     * Retorna as avaliações relacioandas com o Post
+     *
+     * @return void
+     */
+    public function ratings()
+    {
+        return $this->morphMany('App\Rating', 'ratingable');
+    }
 }
