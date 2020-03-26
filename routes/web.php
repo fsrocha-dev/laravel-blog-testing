@@ -16,14 +16,12 @@ Route::get('/', 'Site\PostController@index')->name("home");
 
 Route::post('comments/{post}', 'Site\CommentController@store')->name('comments.store');
 
+Route::post('ratings/{post}', 'Site\RatingController@store')->name('ratings.store');
+
 Route::group(['prefix' => 'admin'], function () {
     Route::resource('posts', 'Admin\PostController');
 });
 
-Route::get('/contato', function() {
+Route::get('/contato', function () {
     return view('contact.index');
 });
-
-
-
-
