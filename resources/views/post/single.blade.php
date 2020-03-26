@@ -47,6 +47,7 @@
         {{ csrf_field() }}
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
+                <p>A média de avalições é: {{ $post->ratings()->avg('value') }}</p>
                 <label for="value">Avaliar</label>
                 <input class="form-control" type="range" min="0" max="10" name="value" list="marcadores" id="input">
                 <datalist id="marcadores">
