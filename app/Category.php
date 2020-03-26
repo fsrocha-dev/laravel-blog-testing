@@ -16,6 +16,7 @@ class Category extends Model
     public function posts()
     {
         return $this->belongsTomany('App\Post', 'category_post', 'category_id', 'post_id')
-                    ->withTimestamps();
+        ->using('App\CategoryPost')
+        ->withTimestamps();
     }
 }
