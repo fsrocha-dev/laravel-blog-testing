@@ -9,6 +9,7 @@
     </a>
     <p class="post-meta">
         Postado por <a href="#">Frank Rocha</a> em @datebr($post->created_at)
+        possui {{ $post->comments_count }} comentário(s)
     </p>
 
     @if (request()->query('categories'))

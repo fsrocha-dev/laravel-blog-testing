@@ -11,10 +11,11 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderBy('created_at', 'desc')
-                    ->whereHas('details', function($query) {
+                    ->whereHas('details', function ($query) {
                         $query->where('status', 'publicado')
                               ->where('visibility', 'publico');
                     })
+                    ->withCount('comments')
                     ->paginate(10);
 
         if (request()->query('categories')) {
