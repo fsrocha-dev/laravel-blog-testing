@@ -61,4 +61,27 @@ class Post extends Model
     {
         return $this->morphMany('App\Rating', 'ratingable');
     }
+
+    /**
+     * Verificando se o post está ativo
+     *
+     * @param $query
+     * @return void
+     */
+    public function scopeIsApproved($query)
+    {
+        return $query->where('approved', 1);
+    }
+
+    /**
+     * Verifica aprovação do post baseado no parametro
+     *
+     * @param $query
+     * @param [integer] $approved
+     * @return void
+     */
+    public function scopeApproved($query, $approved)
+    {
+        return $query->where('approved', $approved);
+    }
 }
