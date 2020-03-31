@@ -117,4 +117,15 @@ class Post extends Model
     {
         return $query->whereHas('categories');
     }
+
+    /**
+     * Acessor que limita a quantidade de caracteres
+     *
+     * @param [type] $value
+     * @return void
+     */
+    public function getContentAttribute($value)
+    {
+        return mb_strimwidth($value, 0, 50, "...");
+    }
 }
