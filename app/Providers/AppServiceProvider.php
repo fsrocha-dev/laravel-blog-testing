@@ -16,13 +16,15 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::component('components.social', 'social');
 
-        Blade::directive('datebr', function($ex) {
+        Blade::directive('datebr', function ($ex) {
             return "<?php echo (new DateTime($ex))->format('d/m/Y'); ?>";
         });
 
-        Blade::if('posttype', function($posttype, $c) {
+        Blade::if('posttype', function ($posttype, $c) {
             return $posttype == $c;
         });
+
+        \App\Post::observe(\App\Observers\PostObserver::class);
     }
 
     /**
