@@ -1,4 +1,5 @@
 <?php
+namespace App\Scopes;
 
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +18,7 @@ class VisibleScope implements Scope
     {
         $builder->wherehas('details', function ($query) {
             $query->where('status', 'publicado')
-                  ->where('visibility', 'publico');
+            ->where('visibility', 'publico');
         });
     }
 }

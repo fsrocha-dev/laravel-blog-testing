@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\PostCreated;
 use App\Scopes\VisibleScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -29,6 +30,10 @@ class Post extends Model
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     protected $date = ['deleted_at'];
+
+    protected $dispatchesEvents = [
+        'created' => PostCreated::class
+    ];
 
     /**
      * Mapeia o relacionamento com o model details
