@@ -124,8 +124,12 @@ class Post extends Model
      * @param [type] $value
      * @return void
      */
-    public function getContentAttribute($value)
+    // public function getContentAttribute($value)
+    // {
+    //     return mb_strimwidth($value, 0, 50, "...");
+    // }
+    public function getSummaryContentAttribute()
     {
-        return mb_strimwidth($value, 0, 50, "...");
+        return mb_strimwidth($this->content, 0, 50, "...");
     }
 }
